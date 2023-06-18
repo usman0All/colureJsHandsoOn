@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS HANDSON 12</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+    .que{
+        color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: large;
+        border-radius:5px;
+        }
+     .ans{
+        color: black;
+        background-color: aqua;
+        font-weight: bold;
+        font-size: large;
+        }
+        hr{
+            background-color: white;
+            height:3px;
+            border-radius: 1px;
+        }
+        </style>
+</head>
+<body>
+
+    <h1>CLOSURES</h1>
+    <hr>
+    <div class="que">Q1.
+    <pre class="que">
+    "function counter(){
+        var counter = 0;
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+        
+    return IncreaseCounter;
+    }
+        
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());"
+    </pre></div>
+    <div class="ans">[Output:1,2,3,4]</div>
+    <div class="ans">Explanation: The value of counter will Increase with respect to how many times it is called, because
+        the counter function, is getting updated as soon as it is called another time.
+    </div>
+    <hr>
+
+
+    <div class="que">Q2.
+        <pre class="que">
+    "let count = 0;
+        (function () {
+        if (count === 0) {
+            let count = 1;
+        console.log(count); // What is logged?
+            }
+        console.log(count); // What is logged?
+    })();"
+        </pre>
+    </div>
+    <div class="ans">[Output:1,0]</div>
+    <div class="ans">Explanation: when console.log(count) was count first time, there it matched the if condition, and when it was called 
+        second time it searched the value which was out of the function scope so it accessed the let variable of 
+        count i.e 0.
+    </div>
+    <hr>
+
+    <div class="que">Q3.
+        <pre class="que">
+        "for (var i = 0; i &lt; 3; i++) {
+            setTimeout(function log() {
+             console.log(i); // What is logged?
+        }, 1000);
+            }"
+        </pre>
+    </div>
+    <div class="ans">[Output:3]</div>
+    <div class="ans">Explanation: While running the code in setTimeout. The function will be called from 0 index which
+        will fullfill the condition less than 3. So it will be printed 3 
+    </div>
+    <hr>
+
+    <div class="que">Q4.Write a code to calculate area of a rectangle using inner function. In this case outer function should 
+        accept parameter length and inner function should accept parameter breadth.</div>
+    <div>
+        <pre class="ans">
+    function Abc(L){
+        function Def(B){
+            return (L*B)
+    }
+        return B
+    }
+    console.log('Area of rectangle' +" "+ (10*5) )
+        </pre>
+    </div>
+<div class="ans">[Output:50]</div>
+<hr>
+
+<div class="que">Q5.Take a variable in outer function and create an inner function to increase the counter every time it is called</div>
+<div> 
+<pre class="ans">
+    function counter(){
+        var counter = 0;
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+    
+    return IncreaseCounter;
+    }
+    var counter = counter();
+    console.log(counter());
+    console.log(counter());
+    console.log(counter());
+    console.log(counter());"
+</pre>
+</div>
+<hr>
+
+<div class="que">Q6.
+    <pre class="que">
+    "Print Output
+
+    var a = 12;
+    (function () {
+    alert(a);
+    })();"
+    </pre>
+</div>
+<div class="ans">[Output:12] It will show as a popup.</div>
+
+<hr>
+
+<div class="que">Q7.<pre>
+    var a = 10;
+    var x = (function () {
+  var a = 12;
+  return function () {
+    alert(a);
+  };
+})();
+x();
+</pre></div>
+<div class="ans">[Output:12] It will show as a popup.(var a=10 will be updated as var a=12, because var is a global scope)</div>
+<hr>
+
+<div class="que">Q8.
+    <pre>
+        "var globalVar = ""xyz"";
+
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b';
+    
+    console.log(
+        ""outerArg = "" + outerArg + ""\n"" +
+        ""innerArg = "" + innerArg + ""\n"" +
+        ""outerVar = "" + outerVar + ""\n"" +
+        ""innerVar = "" + innerVar + ""\n"" +
+        ""globalVar = "" + globalVar);
+    
+    })(456);
+})(123);"
+    </pre>
+</div>
+<div class="ans">[Output:<br>
+   1. outerArg =123 <br>
+   2. innerArg= 456 <br>
+   3. outervar= a <br>
+   4. innervar= b <br>
+   5. globalVar= xyz]</div>
+
+<div class="ans">Explanation: Every variable and function is assigned with respected value</div>
+</body>
+</html>
